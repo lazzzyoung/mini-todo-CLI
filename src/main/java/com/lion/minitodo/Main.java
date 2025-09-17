@@ -25,7 +25,7 @@ public class Main {
         }
     }
 
-    /* ========== 1) 인증 메뉴(회원가입/로그인/종료) ========== */
+
     private static void showAuthMenu() {
         System.out.println("\n==== Mini Todo CLI ====");
         System.out.println("1) 회원가입  2) 로그인  3) 종료");
@@ -65,7 +65,7 @@ public class Main {
 
             UserDTO u = new UserDTO();
             u.setEmail(email);
-            u.setPassword(pw); // 실무: 반드시 해시 저장(bcrypt/argon2)
+            u.setPassword(pw); // 추후 해싱기능 추가해야함
             int newId = userDAO.create(u);
 
             if (newId > 0) System.out.println("회원가입 완료! user_id=" + newId);
@@ -96,7 +96,7 @@ public class Main {
         }
     }
 
-    /* ========== 2) Todo 메뉴(추가/목록/완료/삭제/로그아웃) ========== */
+
     private static void showTodoMenu() {
         System.out.println("\n==== Todo Menu (user_id=" + sessionUserId + ") ====");
         System.out.println("1) 할 일 추가");
@@ -134,7 +134,7 @@ public class Main {
 
             System.out.print("마감일(YYYY-MM-DD, 없으면 엔터): ");
             String due = sc.nextLine().trim();
-            if (due.isBlank()) due = null;  // DB에 NULL로 들어가게
+            if (due.isBlank()) due = null;
 
             TodoDTO t = new TodoDTO();
             t.setUserId(sessionUserId);
@@ -163,7 +163,7 @@ public class Main {
                 System.out.printf(" - [%d] 제목: %s | 내용: %s | 마감: %s | 완료: %s%n",
                         t.getTodoId(),
                         nullToEmpty(t.getTitle()),
-                        nullToDash(t.getContent()),   // 내용 없으면 "-"로
+                        nullToDash(t.getContent()),
                         nullToDash(t.getDue()),
                         t.isDone() ? "Y" : "N"
                 );
