@@ -1,4 +1,4 @@
-package com.lion.minitodo.DTO;
+package com.lion.minitodo.dto;
 
 public class UserDTO {
     private int userId;
@@ -6,11 +6,17 @@ public class UserDTO {
     private String password;
     private String createAt;
 
+    public UserDTO() {
+        System.out.println("user DTO 생성");
+
+    }
     public UserDTO(int userId, String email, String password, String createAt) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.createAt = createAt;
+
+        System.out.println("user DTO 생성");
     }
 
     public int getUserId() {return userId;}

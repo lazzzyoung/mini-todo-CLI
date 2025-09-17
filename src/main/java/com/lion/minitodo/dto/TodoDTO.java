@@ -1,4 +1,4 @@
-package com.lion.minitodo.DTO;
+package com.lion.minitodo.dto;
 public class TodoDTO {
     private int todoId;
     private int userId;
@@ -8,6 +8,11 @@ public class TodoDTO {
     private boolean done;
     private String createdAt;
 
+    public TodoDTO(){
+        System.out.println("todo DTO 생성");
+
+    }
+
     public TodoDTO(int todoId, int userId, String title, String content, String due, boolean done, String createdAt) {
         this.todoId = todoId;
         this.userId = userId;
@@ -16,6 +21,7 @@ public class TodoDTO {
         this.due = due;
         this.done = done;
         this.createdAt = createdAt;
+        System.out.println("todo DTO 생성");
     }
 
     public int getTodoId() { return todoId; }
